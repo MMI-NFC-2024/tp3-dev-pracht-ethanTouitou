@@ -57,36 +57,3 @@ const embed = Astro.url.searchParams.has("embed");
     </Layout>
   )
 }
-
-{
-  embed && (
-    <div class="p-4">
-      <h1 class="mb-4 text-2xl font-bold tracking-tight">Chinstrap</h1>
-
-      <!-- NAV intégrée (iframe) : même logique, actif sur Chinstrap -->
-      <nav class="mb-6 flex flex-wrap items-center justify-center gap-2">
-        <a
-          href="/species/Adelie?embed=1"
-          class="inline-flex items-center gap-2 rounded-xl border border-slate-300 bg-white/80 px-4 py-2 text-sm font-medium text-slate-700 shadow-sm transition hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-2"
-        >
-          Adelie
-        </a>
-        <a
-          href="/species/Gentoo?embed=1"
-          class="inline-flex items-center gap-2 rounded-xl border border-slate-300 bg-white/80 px-4 py-2 text-sm font-medium text-slate-700 shadow-sm transition hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-2"
-        >
-          Gentoo
-        </a>
-        <a
-          href="/species/Chinstrap?embed=1"
-          aria-current="page"
-          class="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-sky-600 to-indigo-600 px-4 py-2 text-sm font-semibold text-white shadow-md transition hover:from-sky-500 hover:to-indigo-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 focus-visible:ring-offset-2"
-        >
-          Chinstrap
-        </a>
-      </nav>
-
-      <GraphicSpecies species="Chinstrap" />
-    </div>
-  )
-}

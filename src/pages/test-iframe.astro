@@ -31,21 +31,14 @@ import Layout from "../layouts/Layout.astro";
         >
     </div>
     <nav class="mb-6 flex flex-wrap items-center gap-2">
-        <a
-            class="inline-flex items-center gap-2 rounded-xl bg-amber-500/90 px-4 py-2 text-sm font-semibold text-slate-900 shadow-md transition hover:bg-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-400 focus:ring-offset-2"
-            href="/iframe/Adelie"
-            target="speciesFrame">Adelie</a
+        <select
+            id="species-hash"
+            class="rounded border border-slate-300 px-3 py-2 text-sm"
         >
-        <a
-            class="inline-flex items-center gap-2 rounded-xl border border-slate-300 bg-white/80 px-4 py-2 text-sm font-medium text-slate-700 shadow-sm transition hover:bg-white focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2"
-            href="/iframe/Gentoo"
-            target="speciesFrame">Gentoo</a
-        >
-        <a
-            class="inline-flex items-center gap-2 rounded-xl border border-slate-300 bg-white/80 px-4 py-2 text-sm font-medium text-slate-700 shadow-sm transition hover:bg-white focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2"
-            href="/iframe/Chinstrap"
-            target="speciesFrame">Chinstrap</a
-        >
+            <option value="adelie">Adelie</option>
+            <option value="gentoo">Gentoo</option>
+            <option value="chinstrap">Chinstrap</option>
+        </select>
     </nav>
     <iframe
         class="rounded-xl border border-slate-200 bg-white shadow-sm"
@@ -63,5 +56,13 @@ import Layout from "../layouts/Layout.astro";
                 iframe.style.height = min + "px"; // fallback PC
             }
         }
+        // Changement de l’iframe au changement du select
+        document
+            .querySelector("#species-iframe")
+            ?.addEventListener("change", (evt) => {
+                const value = evt.target.value;
+                const iframe = document.getElementById("speciesFrame");
+                if (iframe) iframe.src = "/iframe/" + value + "/";
+            });
     </script>
 </Layout>

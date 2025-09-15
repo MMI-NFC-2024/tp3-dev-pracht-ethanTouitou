@@ -1,0 +1,78 @@
+---
+import Layout from "../layouts/Layout.astro";
+import GraphicSpecies from "../components/GraphicSpecies.astro";
+import {
+    Tabs,
+    TabsList,
+    TabsTab,
+    TabsPanel,
+} from "accessible-astro-components";
+---
+
+<Layout>
+    <div class="mb-5 flex flex-wrap gap-3">
+        <a
+            class="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white/90 px-4 py-2 text-sm font-medium text-slate-700 shadow-sm transition hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-2"
+            href="/">Retour à l’accueil</a
+        >
+        <a
+            class="inline-flex items-center gap-2 rounded-full bg-emerald-600 px-4 py-2 text-sm font-semibold text-white shadow-md transition hover:bg-emerald-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-2"
+            href="/species/Adelie/">Voir les espèces</a
+        >
+    </div>
+
+    <Tabs class="w-full">
+        <TabsList class="flex flex-wrap gap-2 !bg-slate-100 !p-3 !rounded-xl">
+            <TabsTab
+                id="tab-adelie"
+                controls="panel-adelie"
+                selected
+                class="px-5 py-2 !rounded-lg !border-2 !border-amber-400 !bg-amber-500 !text-white font-semibold shadow-md transition hover:!bg-amber-600 focus:!ring-2 focus:!ring-amber-400"
+            >
+                Adelie
+            </TabsTab>
+            <TabsTab
+                id="tab-gentoo"
+                controls="panel-gentoo"
+                class="px-5 py-2 !rounded-lg !border-2 !border-emerald-400 !bg-emerald-100 !text-emerald-800 font-medium shadow-sm transition hover:!bg-emerald-200 focus:!ring-2 focus:!ring-emerald-400"
+            >
+                Gentoo
+            </TabsTab>
+            <TabsTab
+                id="tab-chinstrap"
+                controls="panel-chinstrap"
+                class="px-5 py-2 !rounded-lg !border-2 !border-indigo-400 !bg-indigo-100 !text-indigo-800 font-medium shadow-sm transition hover:!bg-indigo-200 focus:!ring-2 focus:!ring-indigo-400"
+            >
+                Chinstrap
+            </TabsTab>
+        </TabsList>
+
+        <TabsPanel
+            id="panel-adelie"
+            labelledby="tab-adelie"
+            selected
+            class="p-5 !border-2 !border-amber-300 !rounded-xl mt-3 !bg-white shadow"
+        >
+            <h2 class="mb-2 text-2xl font-bold text-amber-700">Adelie</h2>
+            <GraphicSpecies species="Adelie" />
+        </TabsPanel>
+
+        <TabsPanel
+            id="panel-gentoo"
+            labelledby="tab-gentoo"
+            class="p-5 !border-2 !border-emerald-300 !rounded-xl mt-3 !bg-white shadow"
+        >
+            <h2 class="mb-2 text-2xl font-bold text-emerald-700">Gentoo</h2>
+            <GraphicSpecies species="Gentoo" />
+        </TabsPanel>
+
+        <TabsPanel
+            id="panel-chinstrap"
+            labelledby="tab-chinstrap"
+            class="p-5 !border-2 !border-indigo-300 !rounded-xl mt-3 !bg-white shadow"
+        >
+            <h2 class="mb-2 text-2xl font-bold text-indigo-700">Chinstrap</h2>
+            <GraphicSpecies species="Chinstrap" />
+        </TabsPanel>
+    </Tabs>
+</Layout>

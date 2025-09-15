@@ -1,4 +1,5 @@
 ---
+// rien à changer dans ton frontmatter si tu importes déjà Layout & GraphicSpecies
 import Layout from "../layouts/Layout.astro";
 import GraphicSpecies from "../components/GraphicSpecies.astro";
 ---
@@ -27,6 +28,27 @@ import GraphicSpecies from "../components/GraphicSpecies.astro";
                 min-width: 90vw;
             }
         }
+
+        /* Styles "actif" pour le bouton d'ancre courant */
+        .chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            border-radius: 0.75rem;
+            padding: 0.5rem 1rem;
+            border: 1px solid #e2e8f0;
+            background: rgba(255, 255, 255, 0.8);
+            color: #334155;
+            font:
+                500 0.875rem/1.25rem ui-sans-serif,
+                system-ui;
+        }
+        .chip--active {
+            background: #f59e0be6;
+            color: #0f172a;
+            border-color: #f59e0b;
+            font-weight: 700;
+        }
     </style>
 
     <div class="mb-5 flex flex-wrap gap-3">
@@ -36,23 +58,25 @@ import GraphicSpecies from "../components/GraphicSpecies.astro";
         >
         <a
             class="inline-flex items-center gap-2 rounded-full bg-emerald-600 px-4 py-2 text-sm font-semibold text-white shadow-md transition hover:bg-emerald-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-2"
-            href="/species/Adelie">Voir les espèces</a
+            href="/species/Adelie/">Voir les espèces</a
         >
     </div>
-    <nav class="mb-6 flex flex-wrap items-center gap-2">
-        <a
-            class="inline-flex items-center gap-2 rounded-xl bg-amber-500/90 px-4 py-2 text-sm font-semibold text-slate-900 shadow-md transition hover:bg-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-400 focus:ring-offset-2"
-            href="#adelie">Adelie</a
+
+    <!-- MENU SELECT (ancres) -->
+    <div class="mb-4 flex items-center gap-3">
+        <label for="species-hash" class="text-sm font-medium text-slate-700"
+            >Espèce :</label
         >
-        <a
-            class="inline-flex items-center gap-2 rounded-xl border border-slate-300 bg-white/80 px-4 py-2 text-sm font-medium text-slate-700 shadow-sm transition hover:bg-white focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2"
-            href="#gentoo">Gentoo</a
+        <select
+            id="species-hash"
+            class="rounded border border-slate-300 px-3 py-2 text-sm"
         >
-        <a
-            class="inline-flex items-center gap-2 rounded-xl border border-slate-300 bg-white/80 px-4 py-2 text-sm font-medium text-slate-700 shadow-sm transition hover:bg-white focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2"
-            href="#chinstrap">Chinstrap</a
-        >
-    </nav>
+            <option value="#adelie">Adelie</option>
+            <option value="#gentoo">Gentoo</option>
+            <option value="#chinstrap">Chinstrap</option>
+        </select>
+    </div>
+
     <div class="slider">
         <section
             class="slide rounded-xl border border-slate-200 bg-white shadow-sm"
@@ -76,4 +100,22 @@ import GraphicSpecies from "../components/GraphicSpecies.astro";
             <GraphicSpecies species="Chinstrap" />
         </section>
     </div>
+
+    <script>
+        const $select = document.getElementById("species-hash");
+        $select?.addEventListener("change", (evt) => {
+            const value = evt.target.value;
+            location.hash = value;
+        });
+
+        const chips = Array.from(document.querySelectorAll("a.chip"));
+        const syncFromHash = () => {
+            const hash = location.hash || "#adelie";
+            if ($select && $select.value !== hash) $select.value = hash;
+            chips.forEach((a) => {
+                const active = a.getAttribute("data-hash") === hash;
+                a.classList.toggle("chip--active", active);
+            });
+        };
+    </script>
 </Layout>
