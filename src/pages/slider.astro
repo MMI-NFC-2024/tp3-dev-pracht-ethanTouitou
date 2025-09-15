@@ -1,0 +1,79 @@
+---
+import Layout from "../layouts/Layout.astro";
+import GraphicSpecies from "../components/GraphicSpecies.astro";
+---
+
+<Layout>
+    <style>
+        nav {
+            margin-bottom: 1em;
+        }
+        .slider {
+            display: flex;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            gap: 2em;
+            padding-bottom: 1em;
+            scroll-snap-type: x mandatory;
+        }
+        .slide {
+            min-width: 350px;
+            flex: 0 0 80vw;
+            scroll-snap-align: start;
+            padding: 1em;
+        }
+        @media (max-width: 600px) {
+            .slide {
+                min-width: 90vw;
+            }
+        }
+    </style>
+
+    <div class="mb-5 flex flex-wrap gap-3">
+        <a
+            class="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white/90 px-4 py-2 text-sm font-medium text-slate-700 shadow-sm transition hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-2"
+            href="/">Retour à l’accueil</a
+        >
+        <a
+            class="inline-flex items-center gap-2 rounded-full bg-emerald-600 px-4 py-2 text-sm font-semibold text-white shadow-md transition hover:bg-emerald-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-2"
+            href="/species/Adelie">Voir les espèces</a
+        >
+    </div>
+    <nav class="mb-6 flex flex-wrap items-center gap-2">
+        <a
+            class="inline-flex items-center gap-2 rounded-xl bg-amber-500/90 px-4 py-2 text-sm font-semibold text-slate-900 shadow-md transition hover:bg-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-400 focus:ring-offset-2"
+            href="#adelie">Adelie</a
+        >
+        <a
+            class="inline-flex items-center gap-2 rounded-xl border border-slate-300 bg-white/80 px-4 py-2 text-sm font-medium text-slate-700 shadow-sm transition hover:bg-white focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2"
+            href="#gentoo">Gentoo</a
+        >
+        <a
+            class="inline-flex items-center gap-2 rounded-xl border border-slate-300 bg-white/80 px-4 py-2 text-sm font-medium text-slate-700 shadow-sm transition hover:bg-white focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2"
+            href="#chinstrap">Chinstrap</a
+        >
+    </nav>
+    <div class="slider">
+        <section
+            class="slide rounded-xl border border-slate-200 bg-white shadow-sm"
+            id="adelie"
+        >
+            <h2 class="mb-2 text-2xl font-semibold">Adelie</h2>
+            <GraphicSpecies species="Adelie" />
+        </section>
+        <section
+            class="slide rounded-xl border border-slate-200 bg-white shadow-sm"
+            id="gentoo"
+        >
+            <h2 class="mb-2 text-2xl font-semibold">Gentoo</h2>
+            <GraphicSpecies species="Gentoo" />
+        </section>
+        <section
+            class="slide rounded-xl border border-slate-200 bg-white shadow-sm"
+            id="chinstrap"
+        >
+            <h2 class="mb-2 text-2xl font-semibold">Chinstrap</h2>
+            <GraphicSpecies species="Chinstrap" />
+        </section>
+    </div>
+</Layout>

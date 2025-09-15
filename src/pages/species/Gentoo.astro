@@ -1,0 +1,91 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import GraphicSpecies from "../../components/GraphicSpecies.astro";
+const embed = Astro.url.searchParams.has("embed");
+---
+
+{
+  !embed && (
+    <Layout>
+      <h1 class="mb-4 text-3xl font-bold tracking-tight">Manchots Adelie</h1>
+
+      <!-- NAV espèces : style "chips" + actif distinct -->
+      <nav class="mb-6 flex flex-wrap items-center justify-center gap-2">
+        <!-- Actif (Adelie) -->
+        <a
+          href="/species/Adelie"
+          class="inline-flex items-center gap-2 rounded-xl border border-slate-300 bg-white/80 px-4 py-2 text-sm font-medium text-slate-700 shadow-sm transition hover:bg-white focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2"
+        >
+          Adelie
+        </a>
+        <!-- Inactifs -->
+        <a
+          href="/species/Gentoo"
+                             class="inline-flex items-center gap-2 rounded-xl bg-amber-500/90 px-4 py-2 text-sm font-semibold text-slate-900 shadow-md transition hover:bg-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-400 focus:ring-offset-2" 
+>
+          Gentoo
+        </a>
+        <a
+          href="/species/Chinstrap"
+           aria-current="page"
+          class="inline-flex items-center gap-2 rounded-xl border border-slate-300 bg-white/80 px-4 py-2 text-sm font-medium text-slate-700 shadow-sm transition hover:bg-white focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2">
+          Chinstrap
+        </a>
+      </nav>
+
+      <!-- Boutons "retour" revus -->
+      <div class="mb-6 flex flex-wrap items-center justify-start gap-3">
+        <a
+          href="/test-iframe"
+          class="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white/90 px-4 py-2 text-sm font-medium text-slate-700 shadow-sm transition hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-2"
+        >
+          <svg class="size-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M10.25 6.75 4.5 12l5.75 5.25v-3h8.25v-4.5H10.25v-3Z"/></svg>
+          Retour à l’iframe
+        </a>
+
+        <a
+          href="/slider"
+          class="inline-flex items-center gap-2 rounded-full bg-emerald-600 px-4 py-2 text-sm font-semibold text-white shadow-md transition hover:bg-emerald-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-2"
+        >
+          <svg class="size-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4 10h16v4H4z"/></svg>
+          Retour au slider
+        </a>
+      </div>
+
+      <GraphicSpecies species="Gentoo" />
+    </Layout>
+  )
+}
+
+{
+  embed && (
+    <div class="p-4">
+      <h1 class="mb-4 text-2xl font-bold tracking-tight">Chinstrap</h1>
+
+      <!-- NAV intégrée (iframe) : même logique, actif sur Chinstrap -->
+      <nav class="mb-6 flex flex-wrap items-center justify-center gap-2">
+        <a
+          href="/species/Adelie?embed=1"
+          class="inline-flex items-center gap-2 rounded-xl border border-slate-300 bg-white/80 px-4 py-2 text-sm font-medium text-slate-700 shadow-sm transition hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-2"
+        >
+          Adelie
+        </a>
+        <a
+          href="/species/Gentoo?embed=1"
+          class="inline-flex items-center gap-2 rounded-xl border border-slate-300 bg-white/80 px-4 py-2 text-sm font-medium text-slate-700 shadow-sm transition hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-2"
+        >
+          Gentoo
+        </a>
+        <a
+          href="/species/Chinstrap?embed=1"
+          aria-current="page"
+          class="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-sky-600 to-indigo-600 px-4 py-2 text-sm font-semibold text-white shadow-md transition hover:from-sky-500 hover:to-indigo-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 focus-visible:ring-offset-2"
+        >
+          Chinstrap
+        </a>
+      </nav>
+
+      <GraphicSpecies species="Gentoo" />
+    </div>
+  )
+}

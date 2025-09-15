@@ -1,0 +1,67 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout>
+    <style>
+        iframe {
+            width: 100%;
+            transition: height 0.2s;
+            min-height: 85vh; /* grand par défaut sur PC */
+        }
+        @media (max-width: 768px) {
+            iframe {
+                min-height: 70vh;
+            }
+        }
+    </style>
+
+    <div class="mb-5 flex flex-wrap gap-3">
+        <a
+            class="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white/90 px-4 py-2 text-sm font-medium text-slate-700 shadow-sm transition hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-2"
+            href="/">Retour à l’accueil</a
+        >
+        <a
+            class="inline-flex items-center gap-2 rounded-full bg-emerald-600 px-4 py-2 text-sm font-semibold text-white shadow-md transition hover:bg-emerald-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-2"
+            href="/species/Adelie">Voir les espèces</a
+        >
+        <a
+            class="inline-flex items-center gap-2 rounded-lg bg-indigo-600 px-3 py-1.5 text-white shadow hover:bg-indigo-500"
+            href="/slider">Voir le slider</a
+        >
+    </div>
+    <nav class="mb-6 flex flex-wrap items-center gap-2">
+        <a
+            class="inline-flex items-center gap-2 rounded-xl bg-amber-500/90 px-4 py-2 text-sm font-semibold text-slate-900 shadow-md transition hover:bg-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-400 focus:ring-offset-2"
+            href="/iframe/Adelie"
+            target="speciesFrame">Adelie</a
+        >
+        <a
+            class="inline-flex items-center gap-2 rounded-xl border border-slate-300 bg-white/80 px-4 py-2 text-sm font-medium text-slate-700 shadow-sm transition hover:bg-white focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2"
+            href="/iframe/Gentoo"
+            target="speciesFrame">Gentoo</a
+        >
+        <a
+            class="inline-flex items-center gap-2 rounded-xl border border-slate-300 bg-white/80 px-4 py-2 text-sm font-medium text-slate-700 shadow-sm transition hover:bg-white focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2"
+            href="/iframe/Chinstrap"
+            target="speciesFrame">Chinstrap</a
+        >
+    </nav>
+    <iframe
+        class="rounded-xl border border-slate-200 bg-white shadow-sm"
+        name="speciesFrame"
+        id="speciesFrame"
+        src="/iframe/Adelie"
+        onload="resizeIframe(this)"></iframe>
+    <script>
+        function resizeIframe(iframe) {
+            const min = Math.round(window.innerHeight * 0.85);
+            try {
+                const h = iframe.contentWindow.document.body.scrollHeight;
+                iframe.style.height = Math.max(min, h) + "px";
+            } catch (e) {
+                iframe.style.height = min + "px"; // fallback PC
+            }
+        }
+    </script>
+</Layout>

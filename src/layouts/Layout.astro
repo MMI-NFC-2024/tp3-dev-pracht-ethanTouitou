@@ -1,0 +1,61 @@
+---
+import "../styles/global.css";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Penguins Explorer</title>
+  </head>
+  <body class="m-0 w-full h-full bg-gray-50 text-gray-900">
+    <!-- HEADER -->
+    <header
+      class="sticky top-0 z-40 bg-gradient-to-r from-purple-700 via-pink-600 to-rose-500 text-white shadow-lg"
+    >
+      <div
+        class="mx-auto flex max-w-6xl items-center justify-between px-6 py-3"
+      >
+        <a href="/" class="flex items-center gap-2 font-semibold tracking-wide">
+          <span>Penguins</span>
+        </a>
+        <nav class="hidden gap-3 md:flex">
+          <a
+            class="rounded-md px-3 py-1.5 hover:bg-white/20 transition-colors"
+            href="/">Accueil</a
+          >
+          <a
+            class="rounded-md px-3 py-1.5 hover:bg-white/20 transition-colors"
+            href="/species/Adelie">Espèces</a
+          >
+          <a
+            class="rounded-md px-3 py-1.5 hover:bg-white/20 transition-colors"
+            href="/slider">Slider</a
+          >
+          <a
+            class="rounded-md px-3 py-1.5 hover:bg-white/20 transition-colors"
+            href="/test-iframe">Iframe</a
+          >
+        </nav>
+      </div>
+    </header>
+
+    <!-- MAIN -->
+    <main class="mx-auto max-w-6xl p-6">
+      <slot />
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="mt-10 border-t border-gray-200/60 bg-gray-900 text-gray-300">
+      <div class="mx-auto max-w-6xl px-6 py-6 text-sm">
+        <p>
+          &copy; {new Date().getFullYear()} Penguins Explorer — Observable Plot +
+          Astro.
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>

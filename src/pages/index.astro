@@ -1,0 +1,182 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout>
+  <!-- HERO -->
+  <section
+    class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-sky-50 via-white to-indigo-50 ring-1 ring-slate-200"
+  >
+    <div class="mx-auto max-w-4xl px-6 py-14 text-center">
+      <h1
+        class="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl"
+      >
+        Explore the Penguins Dataset
+      </h1>
+      <p class="mx-auto mt-3 max-w-2xl text-lg text-slate-600">
+        Trois approches pour visualiser les espèces : pages dédiées, iframe en
+        cible, et slider à ancres. Choisis ton parcours et compare les
+        affichages.
+      </p>
+
+      <!-- CTA group -->
+      <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
+        <!-- Primary -->
+        <a
+          href="/species/Adelie"
+          class="inline-flex items-center justify-center rounded-full bg-sky-600 px-6 py-3 text-white shadow-md transition hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2"
+          aria-label="Explorer par espèce (Adelie)"
+        >
+          <svg
+            class="mr-2 size-5"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            aria-hidden="true"
+            ><path
+              d="M11.7 2.042a.75.75 0 0 1 .6 0c1.136.49 3.446 1.675 4.8 3.926 1.45 2.4 1.225 5.16.818 6.948a11.4 11.4 0 0 1-2.303 4.92c-.927 1.14-2.025 2.012-3.015 2.614a.75.75 0 0 1-.8 0c-.99-.602-2.088-1.474-3.016-2.615a11.4 11.4 0 0 1-2.302-4.92c-.407-1.788-.632-4.548.818-6.948 1.354-2.25 3.664-3.436 4.8-3.925Z"
+            ></path></svg
+          >
+          Espèces (Adelie)
+        </a>
+
+        <!-- Secondary filled (différente couleur) -->
+        <a
+          href="/slider"
+          class="inline-flex items-center justify-center rounded-full bg-emerald-600 px-6 py-3 text-white shadow-md transition hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2"
+        >
+          <svg class="mr-2 size-5" viewBox="0 0 24 24" fill="currentColor"
+            ><path
+              d="M3 7.5A1.5 1.5 0 0 1 4.5 6h15A1.5 1.5 0 0 1 21 7.5v9A1.5 1.5 0 0 1 19.5 18h-15A1.5 1.5 0 0 1 3 16.5v-9Zm3 0h12v9H6v-9Z"
+            ></path></svg
+          >
+          Slider & ancres
+        </a>
+
+        <!-- Ghost / outline -->
+        <a
+          href="/test-iframe"
+          class="inline-flex items-center justify-center rounded-full border border-slate-300 bg-white px-6 py-3 text-slate-700 shadow-sm transition hover:border-slate-400 hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2"
+        >
+          <svg class="mr-2 size-5" viewBox="0 0 24 24" fill="currentColor"
+            ><path
+              d="M4.5 5A1.5 1.5 0 0 0 3 6.5v11A1.5 1.5 0 0 0 4.5 19h15a1.5 1.5 0 0 0 1.5-1.5v-11A1.5 1.5 0 0 0 19.5 5h-15Zm.5 2h14v10H5V7Z"
+            ></path></svg
+          >
+          Vue Iframe
+        </a>
+      </div>
+    </div>
+
+    <!-- Décor discret -->
+    <div
+      class="pointer-events-none absolute -right-24 -top-24 size-72 rounded-full bg-sky-200/40 blur-3xl"
+    >
+    </div>
+    <div
+      class="pointer-events-none absolute -bottom-24 -left-24 size-72 rounded-full bg-indigo-200/40 blur-3xl"
+    >
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="mx-auto mt-10 max-w-6xl">
+    <div class="grid gap-6 md:grid-cols-3">
+      <div class="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
+        <div
+          class="mb-3 inline-flex size-10 items-center justify-center rounded-full bg-sky-100 text-sky-700"
+        >
+          <svg class="size-5" viewBox="0 0 24 24" fill="currentColor"
+            ><path
+              d="M12 3.75a8.25 8.25 0 1 0 0 16.5 8.25 8.25 0 0 0 0-16.5Zm0 3a5.25 5.25 0 1 1 0 10.5A5.25 5.25 0 0 1 12 6.75Z"
+            ></path></svg
+          >
+        </div>
+        <h3 class="text-base font-semibold text-slate-900">
+          Une page par graphique
+        </h3>
+        <p class="mt-1 text-sm text-slate-600">
+          Filtrage explicite par espèce avec <code
+            class="rounded bg-slate-100 px-1 py-0.5">penguins.filter(...)</code
+          >.
+        </p>
+        <a
+          href="/species/Adelie"
+          class="mt-3 inline-flex items-center text-sm font-medium text-sky-700 hover:underline"
+          >Voir un exemple</a
+        >
+      </div>
+
+      <div class="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
+        <div
+          class="mb-3 inline-flex size-10 items-center justify-center rounded-full bg-emerald-100 text-emerald-700"
+        >
+          <svg class="size-5" viewBox="0 0 24 24" fill="currentColor"
+            ><path
+              d="M4 7.5A1.5 1.5 0 0 1 5.5 6h13A1.5 1.5 0 0 1 20 7.5v9A1.5 1.5 0 0 1 18.5 18h-13A1.5 1.5 0 0 1 4 16.5v-9Z"
+            ></path></svg
+          >
+        </div>
+        <h3 class="text-base font-semibold text-slate-900">
+          Navigation en iframe
+        </h3>
+        <p class="mt-1 text-sm text-slate-600">
+          Liens avec <code class="rounded bg-slate-100 px-1 py-0.5">target</code
+          > vers un <code class="rounded bg-slate-100 px-1 py-0.5"
+            >&lt;iframe name=&quot;...&quot;&gt;</code
+          >.
+        </p>
+        <a
+          href="/test-iframe"
+          class="mt-3 inline-flex items-center text-sm font-medium text-emerald-700 hover:underline"
+          >Essayer l’iframe</a
+        >
+      </div>
+
+      <div class="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
+        <div
+          class="mb-3 inline-flex size-10 items-center justify-center rounded-full bg-fuchsia-100 text-fuchsia-700"
+        >
+          <svg class="size-5" viewBox="0 0 24 24" fill="currentColor"
+            ><path d="M5 7a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v10H5V7Zm2 9h10V7H7v9Z"
+            ></path></svg
+          >
+        </div>
+        <h3 class="text-base font-semibold text-slate-900">Slider + ancres</h3>
+        <p class="mt-1 text-sm text-slate-600">
+          Défilement horizontal fluide avec <em>scroll-snap</em> et menu d’ancres.
+        </p>
+        <a
+          href="/slider"
+          class="mt-3 inline-flex items-center text-sm font-medium text-fuchsia-700 hover:underline"
+          >Voir le slider</a
+        >
+      </div>
+    </div>
+  </section>
+
+  <!-- Bonus: section liens rapides -->
+  <section class="mx-auto mt-10 max-w-4xl">
+    <div
+      class="rounded-xl border border-slate-200 bg-white p-5 text-center shadow-sm"
+    >
+      <p class="text-sm text-slate-600">Besoin d’aller vite ?</p>
+      <div class="mt-3 flex flex-wrap items-center justify-center gap-2">
+        <a
+          href="/species/Gentoo"
+          class="rounded-full bg-slate-900 px-4 py-2 text-sm text-white transition hover:bg-slate-800"
+          >Gentoo</a
+        >
+        <a
+          href="/species/Chinstrap"
+          class="rounded-full bg-slate-200 px-4 py-2 text-sm text-slate-800 transition hover:bg-slate-300"
+          >Chinstrap</a
+        >
+        <a
+          href="/species"
+          class="rounded-full border border-slate-300 bg-white px-4 py-2 text-sm text-slate-700 transition hover:border-slate-400"
+          >Toutes les espèces</a
+        >
+      </div>
+    </div>
+  </section>
+</Layout>
